@@ -1,0 +1,14 @@
+<html> 
+  <head> 
+    <script src="jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load("https://raw.githubusercontent.com/yuwlian/yuwlian.github.io/main/heypleasedontsteal.html"); 
+    });
+    </script> 
+  </head> 
+
+  <body> 
+     <div id="includedContent"></div>
+  </body> 
+</html>
