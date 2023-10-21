@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>senpaicalcs</title>
+    <script>
+      function customParseFloat(value) {
+      var numericParts = value.match(/\d+(\.\d+)?/g);
+      if (numericParts) {
+      return numericParts.reduce(function (accumulator, part) {
+      return accumulator + parseFloat(part);
+      }, 0);
+      }
+      return NaN;
+      }
+      function calculate() {
+      var box1 = customParseFloat(document.getElementById("box1").value);
+      var box2 = customParseFloat(document.getElementById("box2").value);
+      var box3 = customParseFloat(document.getElementById("box3").value);	
+      var box4 = customParseFloat(document.getElementById("box4").value);
+      var box5 = customParseFloat(document.getElementById("box5").value);
+      var box6 = customParseFloat(document.getElementById("box6").value);
+      var box7 = customParseFloat(document.getElementById("box7").value);
+      var box8 = customParseFloat(document.getElementById("box8").value);
+      var box9 = customParseFloat(document.getElementById("box9").value);
+      var box10 = customParseFloat(document.getElementById("box10").value);
+      var box11 = customParseFloat(document.getElementById("box11").value);
+      if (!isNaN(box1) && !isNaN(box2) && !isNaN(box3) && !isNaN(box4) && !isNaN(box5) && !isNaN(box6) && !isNaN(box7) && !isNaN(box8) && !isNaN(box9) && !isNaN(box10) && !isNaN(box11)) {
+      var result = ((box1) * (box2 / 100) * (1 + box3 / 100) * (1 + box4 / 100) * (box6+20)/((box5+20)*(1-box7/100)+box6+20)) * (1-(box8/100-box9/100)) * (1+(box10/100)) * box11;
+      result = result.toFixed(0)
+      document.getElementById("result").value = result;
+      } else {
+      document.getElementById("result").value = "Invalid input";
+      }
+      }
+    </script>
+  </head>
+  <body>
+    <h2>senpaicalcs HSR</h2>
+    <p>you can put in additions and other stuff in the inputs btw.<p>
+    <p><b>Main Multiplier</b></p>
+    <form>
+      <label for="box1">Stat:</label>
+      <input type="text" id="box1" oninput="calculate()"><br>
+      Atk, hp, def, whatever the dmg scales off.<br><br>
+      <label for="box2">Multiplier%:</label>
+      <input type="text" id="box2" oninput="calculate()"><br>
+      The scaling of the skill/ult/etc.<br><br>
+      <label for="box3">DmgBoost%:</label>
+      <input type="text" id="box3" oninput="calculate()"><br>
+      Stuff like wind dmg boost, lightcone dmg boost, add it all up here.<br><br>
+      <label for="box4">CritDmg%:</label>
+      <input type="text" id="box4" oninput="calculate()"><br>
+      This should be obvious... just leave at 0 if it's not crit.
+    </form>
+    <p><b>Defense Multiplier</b></p>
+    <form>
+      <label for="box5">EnemyLevel:</label>
+      <input type="text" id="box5" oninput="calculate()"><br>
+      Enemy's level.<br><br>
+      <label for="box6">CharLevel:</label>
+      <input type="text" id="box6" oninput="calculate()"><br>
+      Your character's level.<br><br>
+      <label for="box7">DefReduction%:</label>
+      <input type="text" id="box7" oninput="calculate()"><br>
+      It's additive (ex: SW ult + bugs). Just sum all the def reduction and input it.
+    </form>
+    <p><b>Res Multiplier</b></p>
+    <form>
+      <label for="box8">EnemyRes:</label>
+      <input type="text" id="box8" oninput="calculate()"><br>
+      Enemy's dmg resistance.<br><br>
+      <label for="box9">CharResPen:</label>
+      <input type="text" id="box9" oninput="calculate()"><br>
+      Your character's res penetration.
+    </form>
+    </form>
+    <p><b>Vuln Multiplier</b></p>
+    <form>
+      <label for="box10">EnemyVuln%:</label>
+      <input type="text" id="box10" oninput="calculate()"><br>
+      Enemy's vulnerability. Any extra % dmg taken/received = vuln.<br><br>
+      <label for="box11">WeaknessBroken:</label>
+      <input type="text" id="box11" oninput="calculate()"><br>
+      If enemy is not weakness broken, type in 0.9 else 1.
+    </form>
+    <p><b>Damage Result</b></p>
+    <form>
+      <label for="result">Here's your damage, senpai! It might not be accurate due to roundings!</label>
+      <input type="text" id="result" readonly>
+    </form>
+    <br>
+  </body>
+</html>
