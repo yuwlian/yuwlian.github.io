@@ -1,204 +1,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HSR Dmg Calc</title>
-<meta content="HSR Damage Calculator" property="og:title" />
-<meta content="Made by Yulian, ty guoba for formulas" property="og:description" />
-<meta content="https://yuwlian.github.io/hsrdmg" property="og:url" />
-<meta content="#F0F0F0" data-react-helmet="true" name="theme-color" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            height: 600px; 
-        }
-
-        h2 {
-            text-align: center;
-        }
-        .tab {
-            display: none;
-        }
-
-        .tab-button {
-            display: inline-block;
-            padding: 10px 20px;
-            cursor: pointer;
-            background-color: #f0f0f0;
-            border: none;
-            border-radius: 10px 10px 0 0;
-        }
-
-        .active-tab-button {
-            background-color: #f0f0f0;
-        }
-
-        .form-container {
-            background-color: #f0f0f0;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 0 0 10px 10px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        input[type="text"] {
-            width: 97.99%;
-            padding: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-background-color: #FDFDFD;
-        }
-
-        p {
-            text-align: center;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-    </style>
-    <script>
-      function customParseFloat(value) {
-      var numericParts = value.match(/\d+(\.\d+)?/g);
-      if (numericParts) {
-      return numericParts.reduce(function (accumulator, part) {
-      return accumulator + parseFloat(part);
-      }, 0);
-      }
-      return NaN;
-      }
-      function calculate() {
-      var box1 = customParseFloat(document.getElementById("box1").value);
-      var box2 = customParseFloat(document.getElementById("box2").value);
-      var box3 = customParseFloat(document.getElementById("box3").value);	
-      var box4 = customParseFloat(document.getElementById("box4").value);
-      var box5 = customParseFloat(document.getElementById("box5").value);
-      var box6 = customParseFloat(document.getElementById("box6").value);
-      var box7 = customParseFloat(document.getElementById("box7").value);
-      var box8 = customParseFloat(document.getElementById("box8").value);
-      var box9 = customParseFloat(document.getElementById("box9").value);
-      var box10 = customParseFloat(document.getElementById("box10").value);
-      var box11 = customParseFloat(document.getElementById("box11").value);
-      if (!isNaN(box1) && !isNaN(box2) && !isNaN(box3) && !isNaN(box4) && !isNaN(box5) && !isNaN(box6) && !isNaN(box7) && !isNaN(box8) && !isNaN(box9) && !isNaN(box10) && !isNaN(box11)) {
-      var result = ((box1) * (box2 / 100) * (1 + box3 / 100) * (1 + box4 / 100) * (box6+20)/((box5+20)*(1-box7/100)+box6+20)) * (1-(box8/100-box9/100)) * (1+(box10/100)) * box11;
-      result = result.toFixed(0)
-      document.getElementById("result").value = result;
-      } else {
-      document.getElementById("result").value = "No result. Please make sure to fill in every textbox.";
-      }
-      }
-    </script>
+ <title>HSR Dmg Calc</title>
+ <meta content="HSR Damage Calculator" property="og:title" />
+ <meta content="Made by Yulian, ty guoba for formulas" property="og:description" />
+ <meta content="https://yuwlian.github.io/hsrdmg" property="og:url" />
+ <meta content="#F0F0F0" data-react-helmet="true" name="theme-color" />
+ <style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  }
+  .container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 600px; 
+  }
+  h2 {
+  text-align: center;
+  }
+  .tab {
+  display: none;
+  }
+  .tab-button {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  }
+  .active-tab-button {
+  background-color: #f0f0f0;
+  }
+  .form-container {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 0 0 10px 10px;
+  }
+  label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  }
+  input[type="text"] {
+  width: 97.99%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #FDFDFD;
+  }
+  p {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  }
+ </style>
+ <script>
+  function customParseFloat(value) {
+  var numericParts = value.match(/\d+(\.\d+)?/g);
+  if (numericParts) {
+  return numericParts.reduce(function (accumulator, part) {
+  return accumulator + parseFloat(part);
+  }, 0);
+  }
+  return NaN;
+  }
+  function calculate() {
+  var box1 = customParseFloat(document.getElementById("box1").value);
+  var box2 = customParseFloat(document.getElementById("box2").value);
+  var box3 = customParseFloat(document.getElementById("box3").value);	
+  var box4 = customParseFloat(document.getElementById("box4").value);
+  var box5 = customParseFloat(document.getElementById("box5").value);
+  var box6 = customParseFloat(document.getElementById("box6").value);
+  var box7 = customParseFloat(document.getElementById("box7").value);
+  var box8 = customParseFloat(document.getElementById("box8").value);
+  var box9 = customParseFloat(document.getElementById("box9").value);
+  var box10 = customParseFloat(document.getElementById("box10").value);
+  var box11 = customParseFloat(document.getElementById("box11").value);
+  if (!isNaN(box1) && !isNaN(box2) && !isNaN(box3) && !isNaN(box4) && !isNaN(box5) && !isNaN(box6) && !isNaN(box7) && !isNaN(box8) && !isNaN(box9) && !isNaN(box10) && !isNaN(box11)) {
+  var result = ((box1) * (box2 / 100) * (1 + box3 / 100) * (1 + box4 / 100) * (box6+20)/((box5+20)*(1-box7/100)+box6+20)) * (1-(box8/100-box9/100)) * (1+(box10/100)) * box11;
+  result = result.toFixed(0)
+  document.getElementById("result").value = result;
+  } else {
+  document.getElementById("result").value = "No result. Please make sure to fill in every textbox.";
+  }
+  }
+ </script>
 </head>
 <body>
-        <h2>HSR Damage Calculator</h2>
-        <p>You can put in additions and other stuff in the inputs, e.g., 3000+(1000*25%).</p>
-        <p>If you need help using this, DM me @yuvlian I haven't got the time to make a tutorial vid.</p>
-<p>This calculator only works for SGT damage, blast/aoe will have a large margin of error.</p>
-        <p>Also, don't add the "%" after the number! If it's 39%, just type in 39.</p>
-    <div class="container">
-        <button class="tab-button" onclick="openTab('mainTab')">Main Multiplier</button>
-        <button class="tab-button" onclick="openTab('defenseTab')">Defense Multiplier</button>
-        <button class="tab-button" onclick="openTab('resTab')">Res Multiplier</button>
-        <button class="tab-button" onclick="openTab('vulnTab')">Vuln Multiplier</button>
-
-        <div id="mainTab" class="tab">
-            <div class="form-container">
-                <b><u>Main Multiplier</u></b>
-                <form>
-                    <label for="box1">StatValue:</label>
-                    <input type="text" id="box1" oninput="calculate()"><br>
-                    Number of your atk/hp/def or whatever your dps scales off.<br><br>
-                    <label for="box2">Multiplier%:</label>
-                    <input type="text" id="box2" oninput="calculate()"><br>
-                    The scaling of the skill/ult/etc.<br><br>
-                    <label for="box3">DmgBoost%:</label>
-                    <input type="text" id="box3" oninput="calculate()"><br>
-                    Stuff like wind dmg boost, lightcone dmg boost, add it all up here.<br><br>
-                    <label for="box4">CritDmg%:</label>
-                    <input type="text" id="box4" oninput="calculate()"><br>
-                    This should be obvious... just leave at 0 if it's not crit.
-                </form>
-            </div>
-        </div>
-
-        <div id="defenseTab" class="tab">
-            <div class="form-container">
-                <b><u>Defense Multiplier</u></b>
-                <form>
-                    <label for="box5">EnemyLevel:</label>
-                    <input type="text" id="box5" oninput="calculate()"><br>
-                    Enemy's level.<br><br>
-                    <label for="box6">CharLevel:</label>
-                    <input type="text" id="box6" oninput="calculate()"><br>
-                    Your character's level.<br><br>
-                    <label for="box7">DefReduction%:</label>
-                    <input type="text" id="box7" oninput="calculate()"><br>
-                    It's additive (ex: SW ult + bugs). Def ignore also should be added to this value.
-                </form>
-            </div>
-        </div>
-
-        <div id="resTab" class="tab">
-            <div class="form-container">
-                <b><u>Res Multiplier</u></b>
-                <form>
-                    <label for="box8">EnemyRes:</label>
-                    <input type="text" id="box8" oninput="calculate()"><br>
-                    Enemy's dmg resistance.<br><br>
-                    <label for="box9">CharResPen:</label>
-                    <input type="text" id="box9" oninput="calculate()"><br>
-                    Your character's res penetration.
-                </form>
-            </div>
-        </div>
-
-        <div id="vulnTab" class="tab">
-            <div class="form-container">
-                <b><u>Vuln Multiplier</u></b>
-                <form>
-                    <label for="box10">EnemyVuln%:</label>
-                    <input type="text" id="box10" oninput="calculate()"><br>
-                    Enemy's vulnerability. Any extra % dmg taken/received = vuln.<br><br>
-                    <label for="box11">WeaknessBroken:</label>
-                    <input type="text" id="box11" oninput="calculate()"><br>
-                    If the enemy is not weakness broken, type in 0.9 else 1.
-                </form>
-            </div>
-        </div>
-
-        <div class="form-container">
-            <b><u>Damage Result</u></b>
-            <form>
-<br>
-                <input type="text" id="result" readonly>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        function openTab(tabName) {
-            var i, tab;
-            tab = document.getElementsByClassName("tab");
-            for (i = 0; i < tab.length; i++) {
-                tab[i].style.display = "none";
-            }
-            document.getElementById(tabName).style.display = "block";
-        }
-        openTab("mainTab");
-    </script>
+ <h2>HSR Damage Calculator</h2>
+ <p>You can put in additions and other stuff in the inputs, e.g., 3000+(1000*25%).</p>
+ <p>If you need help using this, DM me @yuvlian I haven't got the time to make a tutorial vid.</p>
+ <p>This calculator only works for SGT damage, blast/AoE will have a large margin of error.</p>
+ <p>Also, don't add the "%" after the number. If it's 39%, just type in 39.</p>
+ <div class="container"> <button class="tab-button" onclick="openTab('mainTab')">Main Multiplier</button> <button class="tab-button" onclick="openTab('defenseTab')">Defense Multiplier</button> <button class="tab-button" onclick="openTab('resTab')">Res Multiplier</button> <button class="tab-button" onclick="openTab('vulnTab')">Vuln Multiplier</button>
+  <div id="mainTab" class="tab">
+   <div class="form-container"> <b><u>Main Multiplier</u></b>
+    <form> <label for="box1">StatValue:</label> <input type="text" id="box1" oninput="calculate()"><br> Number of your atk/hp/def or whatever your dps scales off.<br><br> <label for="box2">Multiplier%:</label> <input type="text" id="box2" oninput="calculate()"><br> The scaling of the skill/ult/etc.<br><br> <label for="box3">DmgBoost%:</label> <input type="text" id="box3" oninput="calculate()"><br> Stuff like wind dmg boost, lightcone dmg boost, add it all up here.<br><br> <label for="box4">CritDmg%:</label> <input type="text" id="box4" oninput="calculate()"><br> Just leave at 0 if it's not crit. </form>
+   </div>
+  </div>
+  <div id="defenseTab" class="tab">
+   <div class="form-container"> <b><u>Defense Multiplier</u></b>
+    <form> <label for="box5">EnemyLevel:</label> <input type="text" id="box5" oninput="calculate()"><br> Enemy's level.<br><br> <label for="box6">CharLevel:</label> <input type="text" id="box6" oninput="calculate()"><br> Your character's level.<br><br> <label for="box7">DefReduction%:</label> <input type="text" id="box7" oninput="calculate()"><br> It's additive (ex: SW ult + bugs). Def ignore also should be added to this value. </form>
+   </div>
+  </div>
+  <div id="resTab" class="tab">
+   <div class="form-container"> <b><u>Res Multiplier</u></b>
+    <form> <label for="box8">EnemyRes:</label> <input type="text" id="box8" oninput="calculate()"><br> Enemy's dmg resistance.<br><br> <label for="box9">CharResPen:</label> <input type="text" id="box9" oninput="calculate()"><br> Your character's res penetration. </form>
+   </div>
+  </div>
+  <div id="vulnTab" class="tab">
+   <div class="form-container"> <b><u>Vuln Multiplier</u></b>
+    <form> <label for="box10">EnemyVuln%:</label> <input type="text" id="box10" oninput="calculate()"><br> Enemy's vulnerability. Any extra % dmg taken/received = vuln.<br><br> <label for="box11">WeaknessBroken:</label> <input type="text" id="box11" oninput="calculate()"><br> If the enemy is not weakness broken, type in 0.9 else 1. </form>
+   </div>
+  </div>
+  <div class="form-container"> <b><u>Damage Result</u></b>
+   <form> <br> <input type="text" id="result" readonly> </form>
+  </div>
+ </div>
+ <script>
+  function openTab(tabName) {
+  var i, tab;
+  tab = document.getElementsByClassName("tab");
+  for (i = 0; i < tab.length; i++) {
+  tab[i].style.display = "none";
+  }
+  document.getElementById(tabName).style.display = "block";
+  }
+  openTab("mainTab");
+ </script>
 </body>
 </html>
