@@ -18,7 +18,7 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  height: 600px; 
+  height: 800px; 
   }
   h2 {
   text-align: center;
@@ -104,7 +104,7 @@
  <div class="container"> <button class="tab-button" onclick="openTab('mainTab')">Main Multiplier</button> <button class="tab-button" onclick="openTab('defenseTab')">Defense Multiplier</button> <button class="tab-button" onclick="openTab('resTab')">Res Multiplier</button> <button class="tab-button" onclick="openTab('vulnTab')">Vuln Multiplier</button>
   <div id="mainTab" class="tab">
    <div class="form-container"> <b><u>Main Multiplier</u></b>
-    <form> <label for="box1">StatValue:</label> <input type="text" id="box1" oninput="calculate()"><br> Number of your atk/hp/def or whatever your dps scales off.<br><br> <label for="box2">Multiplier%:</label> <input type="text" id="box2" oninput="calculate()"><br> The scaling of the skill/ult/etc.<br><br> <label for="box3">DmgBoost%:</label> <input type="text" id="box3" oninput="calculate()"><br> Stuff like wind dmg boost, lightcone dmg boost, etc. Don't forget about planar dmg boost.<br><br> <label for="box4">CritDmg%:</label> <input type="text" id="box4" oninput="calculate()"><br> Just leave at 0 if it's not crit. </form>
+    <form> <label for="box1">StatValue:</label> <input type="text" id="box1" oninput="calculate()"><br> Number of your atk/hp/def or whatever your dps scales off.<br><br> <label for="box2">Multiplier%:</label> <input type="text" id="box2" oninput="calculate()"><br> The scaling of the skill/ult/etc.<br><br> <label for="box3">DmgBoost%:</label> <input type="text" id="box3" oninput="calculate()"><br> Stuff like wind dmg boost, lightcone dmg boost, etc. Don't forget about planar dmg boost.<br><br> <label for="box4">CritDmg%:</label> <input type="text" id="box4" oninput="calculate()"><br> Just leave at 0 if it's not crit. Keep in mind some attacks has multihits, this calculator assumes 100% crit rate.</form>
    </div>
   </div>
   <div id="defenseTab" class="tab">
