@@ -1,0 +1,53 @@
+<h1>Honkai: Star Rail Guides</h1>
+<hr>
+<blockquote>Hello, welcome to my website. I hope you can find these guides helpful.</blockquote>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for character">
+<table id="myTable">
+   <tr>
+      <th>Character</th>
+      <th>Path</th>
+      <th>Element</th>
+      <th>Last Updated</th>
+    </tr>
+    <tr>
+      <td>Pela</td>
+      <td>Nihility</td>
+      <td>Ice</td>
+      <td><a href="/pela.html">Version 1.2</a></td>
+    </tr>
+    <tr>
+      <td>Qingque</td>
+      <td>Erudition</td>
+      <td>Quantum</td>
+      <td><a href="/qingque.html">Version 1.2</a></td>
+    </tr>
+    <tr>
+      <td>Clara</td>
+      <td>Destruction</td>
+      <td>Physical</td>
+      <td><a>Work in Progress</a></td>
+    </tr>
+</table>
+<script>
+   function myFunction() {
+     // Declare variables
+     var input, filter, table, tr, td, i, txtValue;
+     input = document.getElementById("myInput");
+     filter = input.value.toUpperCase();
+     table = document.getElementById("myTable");
+     tr = table.getElementsByTagName("tr");
+   
+     // Loop through all table rows, and hide those who don't match the search query
+     for (i = 0; i < tr.length; i++) {
+       td = tr[i].getElementsByTagName("td")[0];
+       if (td) {
+         txtValue = td.textContent || td.innerText;
+         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+           tr[i].style.display = "";
+         } else {
+           tr[i].style.display = "none";
+         }
+       }
+     }
+   }
+   </script>
